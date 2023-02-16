@@ -24,6 +24,12 @@ CREATE TABLE post (
     date_time_created DATETIME NOT NULL DEFAULT NOW(),
     media_url VARCHAR (255) UNIQUE,
     likes_count INT NOT NULL DEFAULT 0,
+    category varchar(64), 
+    status varchar(64),
+    location varchar(64),
+    artifact_date varchar(64),
+    artifact_time varchar(64),
+    external_url varchar(64)
     PRIMARY KEY(post_id, username),
     FOREIGN KEY (username) REFERENCES user (username)
 );
