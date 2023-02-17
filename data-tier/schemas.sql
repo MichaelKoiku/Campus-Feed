@@ -8,7 +8,6 @@ CREATE TABLE user (
     email VARCHAR (64) UNIQUE NOT NULL,
     password VARCHAR (32) NOT NULL,
     account_type VARCHAR (64) NOT NULL,
-    title  VARCHAR (64), 
     first_name  VARCHAR (64), 
     last_name  VARCHAR (64),
     bio  VARCHAR (64), 
