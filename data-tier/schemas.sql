@@ -41,21 +41,20 @@ INSERT INTO user (username, email, password, account_type) VALUES ('cshub', 'csh
 INSERT INTO user (username, email, password, account_type) VALUES ('yfs', 'yfs@my.yorku.ca', 'organization2_123', 'Organization');
 
 
-INSERT INTO artifact (username, title, content, likes_count) VALUES ('professor1', 
+INSERT INTO artifact (username, title, content, likes_count) VALUES ('elizabrthparker', 
 'Looking for student volunteers regarding a reasearch study', 
 'I am looking for 5 student volunteers to participate in a research study regarding willpower. 
 I have attached a link to a google form for interested students. 
 Link to form: (form)', 1);
-INSERT INTO artifact (username, title, content, likes_count) VALUES ('professor2', 
+INSERT INTO artifact (username, title, content, likes_count) VALUES ('johnadams', 
 'Reasearch opportunities available for undergraduate students.', 
 'My lab has 3 available research positions available to undergraduate students.
 My research is focused on Evidence-based software engineering. 
 Interested students should send an email with thier resume attached to professor2@my.yorku.ca.', 1);
-INSERT INTO artifact (username, title, content, likes_count) VALUES ('organization1', 
-'Spanish Hour Today @ First Student Center Room 302 6:00pm - 7:00pm', 
-'We are having spanish hour classes today @ the First Student Center Room 302 from 6:00pm - 7:00pm. 
-It is free for club members, and $2 for non-members.', 1);
-INSERT INTO artifact (username, title, content, likes_count) VALUES ('organization2', 
+INSERT INTO artifact (username, title, content, likes_count) VALUES ('yfs', 
+'Upcoming Student Union Government Elections', 
+'We will be unveiling our candidates and campaign outline for the upcoming student union government elections.', 1);
+INSERT INTO artifact (username, title, content, likes_count) VALUES ('cshub', 
 'Mexico vs Poland World Cup Group Game Stream Tomorrow @ Second Student Center Room 210 10:00am - 12:00pm', 
 'We are streaming the Mexico vs Poland World Cup Group Game tomorrow @ the Second Student Center Room 210 from 10:00am - 12:00pm. 
 It is free for club members, and $2 for non-members.', 1);
