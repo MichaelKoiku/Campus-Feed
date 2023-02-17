@@ -12,7 +12,7 @@ CREATE TABLE user (
     first_name  VARCHAR (64), 
     last_name  VARCHAR (64),
     bio  VARCHAR (64), 
-    department  VARCHAR (64)
+    department  VARCHAR (64),
     PRIMARY KEY (user_id)
 );
 
@@ -29,19 +29,19 @@ CREATE TABLE artifact (
     date_time_created DATETIME NOT NULL DEFAULT NOW(),
     media_url VARCHAR (255) UNIQUE,
     likes_count INT NOT NULL DEFAULT 0,
-    PRIMARY KEY(post_id, username),
+    PRIMARY KEY(artifact_id, username),
     FOREIGN KEY (username) REFERENCES user (username)
 );
 
-INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, faculty) VALUES ('jsmith', 'jsmith@my.yorku.ca', 'student1_123', 'Student','John', 'Smith', '2nd Year Computer Science Student and Soccer Lover', 'Electrical Engineering and Computer Science');
-INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, faculty) VALUES ('svalera', 'svalera@my.yorku.ca', 'student2_123', 'Student', 'Samantha', 'Valera', '3rd Year Biomedical Science Student and Art Nerd', 'Biology');
-INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, faculty) VALUES ('johnadmams', 'johnadmams@my.yorku.ca', 'professor1_123', 'Professor', 'John', 'Adams', 'Professor at the Lassonde School of Engineering teaching EECS 3101', 'Electrical Engineering and Computer Science');
-INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, faculty) VALUES ('elizabethparker', 'elizabethparker@my.yorku.ca', 'professor2_123', 'Professor', 'Elizabeth', 'Parker', 'Professor at the Department of Biology teaching BIOL 1000', 'Biology');
+INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, department) VALUES ('jsmith', 'jsmith@my.yorku.ca', 'student1_123', 'Student','John', 'Smith', '2nd Year Computer Science Student and Soccer Lover', 'Electrical Engineering and Computer Science');
+INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, department) VALUES ('svalera', 'svalera@my.yorku.ca', 'student2_123', 'Student', 'Samantha', 'Valera', '3rd Year Biomedical Science Student and Art Nerd', 'Biology');
+INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, department) VALUES ('johnadams', 'johnadams@my.yorku.ca', 'professor1_123', 'Professor', 'John', 'Adams', 'Professor at the Lassonde School of Engineering teaching EECS 3101', 'Electrical Engineering and Computer Science');
+INSERT INTO user (username, email, password, account_type, first_name, last_name, bio, department) VALUES ('elizabethparker', 'elizabethparker@my.yorku.ca', 'professor2_123', 'Professor', 'Elizabeth', 'Parker', 'Professor at the Department of Biology teaching BIOL 1000', 'Biology');
 INSERT INTO user (username, email, password, account_type) VALUES ('cshub', 'cshub@my.yorku.ca', 'organization1_123', 'Organization');
 INSERT INTO user (username, email, password, account_type) VALUES ('yfs', 'yfs@my.yorku.ca', 'organization2_123', 'Organization');
 
 
-INSERT INTO artifact (username, title, content, likes_count) VALUES ('elizabrthparker', 
+INSERT INTO artifact (username, title, content, likes_count) VALUES ('elizabethparker', 
 'Looking for student volunteers regarding a reasearch study', 
 'I am looking for 5 student volunteers to participate in a research study regarding willpower. 
 I have attached a link to a google form for interested students. 
