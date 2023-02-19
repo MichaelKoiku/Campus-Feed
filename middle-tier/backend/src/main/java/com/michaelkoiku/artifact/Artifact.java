@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "artifact")
-public class Artifact {
+public class Artifact implements com.michaelkoiku.factory.Entity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
