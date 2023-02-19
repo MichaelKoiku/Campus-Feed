@@ -20,7 +20,7 @@ CREATE TABLE artifact (
     username VARCHAR (15) NOT NULL,
     title VARCHAR (50) NOT NULL,
     content VARCHAR (255) NOT NULL,
-    external_url VARCHAR (255),
+    external_url VARCHAR (255) UNIQUE,
     category VARCHAR (64),
     status VARCHAR (64),
     location VARCHAR (64),
