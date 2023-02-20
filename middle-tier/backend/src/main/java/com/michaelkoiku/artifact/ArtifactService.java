@@ -27,6 +27,10 @@ public class ArtifactService {
 		return artifactRepository.findAll();
 	}
 	
+	public List<Artifact> getAllArtifactsByUsername(String username) {
+		return artifactRepository.findByUsername(username);
+	}
+	
 	public Artifact getArtifactById(long id) {
 		return artifactRepository.findById(id).orElseThrow();
 	}

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import com.michaelkoiku.artifact.Artifact;
 import com.michaelkoiku.artifact.ArtifactRepository;
 import com.michaelkoiku.artifact.ArtifactService;
+import com.michaelkoiku.user.User;
 import com.michaelkoiku.user.UserRepository;
 import com.michaelkoiku.user.UserService;
 
@@ -24,5 +25,12 @@ public class Reciever {
 	public ResponseEntity<List<Artifact>> getAllArtifacts(){
 		return new ResponseEntity<List<Artifact>>(artifactService.getAllArtifacts(), HttpStatus.OK);
 	}
+	
+	public ResponseEntity<User> getStudentProfile(long id) {
+		return new ResponseEntity<User>(userService.getUserById(id), HttpStatus.OK);
+	}
 
+	public ResponseEntity<Artifact> getArtifact(long id) {
+		return new ResponseEntity<Artifact>(artifactService.getArtifactById(id), HttpStatus.OK);
+	}
 }
