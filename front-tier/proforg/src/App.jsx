@@ -1,9 +1,9 @@
-import Feed from './pages/CreateArtifact'
+import CreateArtifact from './pages/CreateArtifact'
 import './App.css'
 
 function App() {
   return (
-    <Feed />
+    <CreateArtifact />
   )
 }
 
