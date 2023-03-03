@@ -19,6 +19,7 @@ function Feed() {
 
     return (
         <div className="container">
+            <br/>
             <form onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="field">
                     <label className="label">Title</label>
