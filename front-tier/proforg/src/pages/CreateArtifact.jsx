@@ -8,12 +8,20 @@ function Feed() {
     const [externalLink, setExternalLink] = useState("")
     const [location, setLocation] = useState("")
     const [status, setStatus] = useState("")
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("...")
 
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         console.log("SUBMITTED", title)
 
+    }
+
+    const uploadFile = (e) => {
+        e.preventDefault();
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
     }
 
 
@@ -72,10 +80,9 @@ function Feed() {
 
                 {/*Date + Time picker */}
 
-
                 <div className="file has-name">
                     <label className="file-label">
-                        <input className="file-input" type="file" name="file" />
+                        <input className="file-input" type="file" name="file" onChange={(e) => uploadFile(e)}/>
                         <span className="file-cta">
                             <span className="file-icon">
                                 <i className="fas fa-upload"></i>
@@ -85,7 +92,7 @@ function Feed() {
                             </span>
                         </span>
                         <span className="file-name">
-                            Screen Shot 2017-07-29 at 15.54.25.png
+                            {fileName}
                         </span>
                     </label>
                 </div>
