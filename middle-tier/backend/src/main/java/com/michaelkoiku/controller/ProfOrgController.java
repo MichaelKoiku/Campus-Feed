@@ -3,6 +3,7 @@ package com.michaelkoiku.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.michaelkoiku.command.proforg.GetMyArtifacts;
 import com.michaelkoiku.command.proforg.Reciever;
 import com.michaelkoiku.user.UserRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/proforg/")
 public class ProfOrgController {
