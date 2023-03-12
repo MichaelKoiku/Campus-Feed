@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
+import Card from "../components/Card"
+import ImageCard from "../components/ImageCard"
 
 function MyArtifacts() {
     const [artifacts, setArtifacts] = useState([])
@@ -25,36 +27,18 @@ function MyArtifacts() {
     return (
         <div className="container">
             {artifacts.map((artifact) => {
-                return (
-                    <>
-                        <div class="card" key={artifact.artifact_id}>
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    {artifact.title}
-                                </p>
-                                <button class="card-header-icon" aria-label="more options">
-                                    <span class="icon">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    {artifact.content}
-                                    <br/>
-                                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                </div>
-                            </div>
-                            <footer class="card-footer">
-                                <a href="#" class="card-footer-item">View</a>
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
-                            </footer>
-                        </div>
-                        <br/>
-                    </>
-                )
-            })}
+                if (artifact.mediaUrl == null) {
+                    return (
+                        <Card key={artifact.artifact_id} props={artifact}/>
+                    )
+                } else {
+                    return (
+                        <ImageCard key={artifact.artifact_id} props={artifact}/>
+                    )
+                }
+            }
+            )
+            }
         </div>
     )
 }

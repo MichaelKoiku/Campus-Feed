@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function Feed() {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
-    const [artifactType, setArtifactType] = useState("")
+    const [category, setCategory] = useState("")
     const [externalLink, setExternalLink] = useState("")
     const [location, setLocation] = useState("")
     const [artifactDateTime, setArtifactDateTime] = useState(new Date())
@@ -21,9 +21,9 @@ function Feed() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log("SUBMITTED", title)
-        
+
         // get s3 link from server
-        const {url} = await fetch("http://localhost:3000/s3").then(res => res.json())
+        const { url } = await fetch("http://localhost:3000/s3").then(res => res.json())
         console.log(url)
 
         // post file to server
@@ -45,13 +45,12 @@ function Feed() {
             "title": title,
             "content": content,
             "externalURL": externalLink,
-            "category": artifactType,
+            "category": category,
             "status": status,
             "location": location,
             "artifactDateTime": artifactDateTime,
             "dateTimeCreated": dateTimeCreated,
-            "mediaUrl": splitURL,
-            "likesCount": 0
+            "mediaUrl": splitURL
         }
 
         await fetch("http://localhost:8080/api/proforg/create", {
@@ -63,10 +62,10 @@ function Feed() {
         }).then(() => {
             console.log(body)
             console.log("Artifact Created")
-    
+
             setTitle("")
             setContent("")
-            setArtifactType("")
+            setCategory("")
             setExternalLink("")
             setLocation("")
             setArtifactDateTime(new Date())
@@ -83,11 +82,11 @@ function Feed() {
         setFileName(e.target.files[0].name);
     }
 
-    
+
 
     return (
         <div className="container">
-            <br/>
+            <br />
             <form onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="field">
                     <label className="label">Title</label>
@@ -104,21 +103,22 @@ function Feed() {
                 </div>
 
                 <div className="field">
-                    <div className="control" onChange={(e) => setArtifactType(e.target.value)}>
+                    <label className="label">Select Artifact Category</label>
+                    <div className="control" onChange={(e) => setCategory(e.target.value)}>
                         <label className="radio">
-                            <input type="radio" name="artifactType" value={artifactType}/>
+                            <input type="radio" name="category" value={category} />
                             Post
                         </label>
                         <label className="radio">
-                            <input type="radio" name="artifactType" value={artifactType}/>
+                            <input type="radio" name="category" value={category} />
                             Remote Event
                         </label>
                         <label className="radio">
-                            <input type="radio" name="artifactType" value={artifactType}/>
+                            <input type="radio" name="category" value={category} />
                             Hybrid Event
                         </label>
                         <label className="radio">
-                            <input type="radio" name="artifactType" value={artifactType}/>
+                            <input type="radio" name="category" value={category} />
                             In-person Event
                         </label>
                     </div>
@@ -139,21 +139,22 @@ function Feed() {
                 </div>
 
                 <div className="field">
+                    <label className="label">Select Artifact Status</label>
                     <div className="control" onChange={(e) => setStatus(e.target.value)}>
                         <label className="radio">
-                            <input type="radio" name="status" value={status}/>
+                            <input type="radio" name="status" value={status} />
                             Active
                         </label>
                         <label className="radio">
-                            <input type="radio" name="status" value={status}/>
+                            <input type="radio" name="status" value={status} />
                             Pending Changes
                         </label>
                         <label className="radio">
-                            <input type="radio" name="status" value={status}/>
+                            <input type="radio" name="status" value={status} />
                             Not Active
                         </label>
                         <label className="radio">
-                            <input type="radio" name="status" value={status}/>
+                            <input type="radio" name="status" value={status} />
                             Cancelled
                         </label>
                     </div>
@@ -162,29 +163,35 @@ function Feed() {
                 <div className="field">
                     <label className="label">Does your artifact have an occurrence date? If yes, please select the date and time below</label>
                     <div className="control">
-                        <DatePicker selected={artifactDateTime} onChange={(date) => setArtifactDateTime(date)} showTimeSelect/>
+                        <DatePicker selected={artifactDateTime} onChange={(date) => setArtifactDateTime(date)} showTimeSelect />
                     </div>
                 </div>
-                
 
-                <div className="file has-name">
-                    <label className="file-label">
-                        <input className="file-input" type="file" name="file" onChange={(e) => stageFile(e)}/>
-                        <span className="file-cta">
-                            <span className="file-icon">
-                                <i className="fas fa-upload"></i>
+
+                <div className="field">
+                    <label className="label">Does your artifact have a corresponding image? If yes, please select the image file below</label>
+                    <div className="file has-name">
+                        <label className="file-label">
+                            <input className="file-input" type="file" name="file" onChange={(e) => stageFile(e)} />
+                            <span className="file-cta">
+                                <span className="file-icon">
+                                    <i className="fas fa-upload"></i>
+                                </span>
+                                <span className="file-label">
+                                    Choose a file…
+                                </span>
                             </span>
-                            <span className="file-label">
-                                Choose a file…
+                            <span className="file-name">
+                                {fileName}
                             </span>
-                        </span>
-                        <span className="file-name">
-                            {fileName}
-                        </span>
-                    </label>
+                        </label>
+                    </div>
                 </div>
-                <br />
+
+
+
                 <button className="button is-medium is-fullwidth is-rounded">Create Artifact</button>
+
 
             </form>
         </div>
