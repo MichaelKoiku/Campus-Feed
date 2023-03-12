@@ -1,4 +1,15 @@
 function ImageCard({ props }) {
+
+    const deleteArtifact = async (e) => {
+        e.preventDefault();
+
+        await fetch("http://localhost:8080/api/proforg/myartifacts/" + props.artifact_id, {
+            method: "DELETE"
+        })
+
+        console.log("Delete Successful");
+    }
+
     return (
         <div className="columns is-centered">
             <div className="column is-half">
@@ -8,7 +19,7 @@ function ImageCard({ props }) {
                             <img src={props.mediaUrl} alt="Artifact image"></img>
                         </figure>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="card-content">
                         <div className="media">
                             <div className="media-content">
@@ -30,8 +41,7 @@ function ImageCard({ props }) {
                         </div>
                     </div>
                     <footer className="card-footer">
-                        <a href="#" className="card-footer-item">View</a>
-                        <a href="#" className="card-footer-item">Delete</a>
+                        <button className="button is-normal is-fullwidth card-footer-item" onClick={(e) => deleteArtifact(e)}>Delete Artifact</button>
                     </footer>
                 </div>
             </div>

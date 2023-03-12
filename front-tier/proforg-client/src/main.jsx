@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/my-artifacts",
     element: <MyArtifacts />,
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
