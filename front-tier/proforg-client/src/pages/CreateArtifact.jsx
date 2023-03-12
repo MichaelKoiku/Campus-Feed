@@ -1,16 +1,21 @@
 import { useState } from "react";
-import axios from 'axios'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+
+import "react-datepicker/dist/react-datepicker.css";
 
 function Feed() {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [artifactType, setArtifactType] = useState("")
-    const [externalLink, setExternalLink] = useState(null)
+    const [externalLink, setExternalLink] = useState("")
     const [location, setLocation] = useState("")
+    const [artifactDateTime, setArtifactDateTime] = useState(new Date())
     const [status, setStatus] = useState("")
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("...")
-    const [mediaURL, setMediaURL] = useState(null)
+    const [mediaURL, setMediaURL] = useState("")
+    const dateTimeCreated = moment().format();
 
 
     const handleFormSubmit = async (e) => {
@@ -29,8 +34,11 @@ function Feed() {
             },
             body: file
         })
-        setMediaURL(url.split('?')[0])
+
+        const splitURL = url.split('?')[0];
+        setMediaURL(splitURL)
         console.log("media " + mediaURL)
+        console.log("posting now")
 
         const body = {
             "username": "elizabethparker",
@@ -40,8 +48,9 @@ function Feed() {
             "category": artifactType,
             "status": status,
             "location": location,
-            "artifactDateTime": null,
-            "mediaUrl": mediaURL,
+            "artifactDateTime": artifactDateTime,
+            "dateTimeCreated": dateTimeCreated,
+            "mediaUrl": splitURL,
             "likesCount": 0
         }
 
@@ -50,10 +59,22 @@ function Feed() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: body
+            body: JSON.stringify(body)
+        }).then(() => {
+            console.log(body)
+            console.log("Artifact Created")
+    
+            setTitle("")
+            setContent("")
+            setArtifactType("")
+            setExternalLink("")
+            setLocation("")
+            setArtifactDateTime(new Date())
+            setStatus("")
+            setFile();
+            setFileName("...")
+            setMediaURL("")
         })
-        console.log(body)
-        console.log("Artifact Created")
     }
 
     const stageFile = (e) => {
@@ -138,8 +159,13 @@ function Feed() {
                     </div>
                 </div>
 
-
-                {/*Date + Time picker */}
+                <div className="field">
+                    <label className="label">Does your artifact have an occurrence date? If yes, please select the date and time below</label>
+                    <div className="control">
+                        <DatePicker selected={artifactDateTime} onChange={(date) => setArtifactDateTime(date)} showTimeSelect/>
+                    </div>
+                </div>
+                
 
                 <div className="file has-name">
                     <label className="file-label">
