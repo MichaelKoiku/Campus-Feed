@@ -3,7 +3,7 @@ import {AppBar, Box, Toolbar, Typography, Button} from '@mui/material';
 
 function ResponsiveAppBar() {
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
       <a className="navbar-item" href="https://bulma.io">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
