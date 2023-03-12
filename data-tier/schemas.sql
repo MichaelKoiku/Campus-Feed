@@ -27,7 +27,6 @@ CREATE TABLE artifact (
     artifact_date_time DATETIME,
     date_time_created DATETIME NOT NULL DEFAULT NOW(),
     media_url VARCHAR (255),
-    likes_count INT NOT NULL DEFAULT 0,
     PRIMARY KEY(artifact_id, username),
     FOREIGN KEY (username) REFERENCES user (username)
 );
