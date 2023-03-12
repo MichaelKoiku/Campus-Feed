@@ -46,9 +46,6 @@ public class Artifact {
 	
 	@Column(name = "media_url")
 	private String mediaUrl;
-	
-	@Column(name = "likes_count")
-	private long likesCount;
 
 	public long getArtifact_id() {
 		return artifact_id;
@@ -136,14 +133,6 @@ public class Artifact {
 
 	public void setMediaUrl(String mediaUrl) {
 		this.mediaUrl = mediaUrl;
-	}
-
-	public long getLikesCount() {
-		return likesCount;
-	}
-
-	public void setLikesCount(long likesCount) {
-		this.likesCount = likesCount;
 	}
 	
 }
