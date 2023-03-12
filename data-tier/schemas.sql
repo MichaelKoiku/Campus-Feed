@@ -18,9 +18,9 @@ CREATE TABLE user (
 CREATE TABLE artifact (
     artifact_id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR (15) NOT NULL,
-    title VARCHAR (50) NOT NULL,
+    title VARCHAR (120) NOT NULL,
     content VARCHAR (255) NOT NULL,
-    external_url VARCHAR (255) UNIQUE,
+    external_url VARCHAR (255),
     category VARCHAR (64),
     status VARCHAR (64),
     location VARCHAR (64),
