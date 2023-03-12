@@ -35,11 +35,11 @@ public class ProfOrgController {
 	}
 	
 	@PostMapping("create")
-	public ResponseEntity<Artifact> createArtifact(@RequestBody Artifact artifact, @RequestParam("file") MultipartFile file){
+	public ResponseEntity<Artifact> createArtifact(@RequestBody Artifact artifact){
 		//Step 1. Invoke Command
 		Invoker<Artifact> invoker = new Invoker<>();
 		Receiver reciever = new Receiver(artifactRepository, userRepository);
-		invoker.setCommand(new CreateArtifact(reciever, artifact, file));
+		invoker.setCommand(new CreateArtifact(reciever, artifact));
 		
 		//Step 2. Return Command Response of type ResponseEntity
 		return invoker.execute();

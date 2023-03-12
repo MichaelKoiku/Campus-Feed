@@ -26,7 +26,7 @@ public class Artifact {
 	@Column(name = "content", nullable = false)
 	private String content;
 	
-	@Column(name = "external_url", unique = true)
+	@Column(name = "external_url")
 	private String externalURL;
 	
 	@Column(name = "category")
@@ -44,7 +44,7 @@ public class Artifact {
 	@Column(name = "date_time_created")
 	private Timestamp dateTimeCreated;
 	
-	@Column(name = "media_url", unique = true)
+	@Column(name = "media_url")
 	private String mediaUrl;
 	
 	@Column(name = "likes_count")

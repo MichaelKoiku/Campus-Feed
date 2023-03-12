@@ -10,16 +10,14 @@ public class CreateArtifact implements Command<Artifact>{
 	
 	private Receiver reciever;
 	private Artifact artifact;
-	private MultipartFile file;
 	
-	public CreateArtifact(Receiver reciever, Artifact artifact, MultipartFile file) {
+	public CreateArtifact(Receiver reciever, Artifact artifact) {
 		super();
 		this.reciever = reciever;
 		this.artifact = artifact;
-		this.file = file;
 	}
 	@Override
 	public ResponseEntity<Artifact> doAction() {
-		return reciever.createArtifact(this.artifact, this.file);
+		return reciever.createArtifact(this.artifact);
 	}
 }

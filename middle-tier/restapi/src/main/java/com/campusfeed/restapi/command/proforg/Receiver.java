@@ -15,15 +15,13 @@ import com.campusfeed.restapi.user.UserService;
 public class Receiver {
 	private ArtifactService artifactService;
 	private UserService userService;
-//	private S3ServiceClient s3Service = S3ServiceClient.getInstance();
-	
+
 	public Receiver(ArtifactRepository artifactRepository, UserRepository userRepository) {
 		this.artifactService = ArtifactService.getInstance(artifactRepository);
 		this.userService = UserService.getInstance(userRepository);
 	}
 
-	public ResponseEntity<Artifact> createArtifact(Artifact artifact, MultipartFile file){
-		//s3Service.saveFile(file);
+	public ResponseEntity<Artifact> createArtifact(Artifact artifact){
 		return new ResponseEntity<Artifact>(artifactService.saveArtifact(artifact), HttpStatus.OK);
 	}
 	
