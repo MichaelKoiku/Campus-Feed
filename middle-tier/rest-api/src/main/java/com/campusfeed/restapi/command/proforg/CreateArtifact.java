@@ -1,7 +1,6 @@
 package com.campusfeed.restapi.command.proforg;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.campusfeed.restapi.artifact.Artifact;
 import com.campusfeed.restapi.command.Command;

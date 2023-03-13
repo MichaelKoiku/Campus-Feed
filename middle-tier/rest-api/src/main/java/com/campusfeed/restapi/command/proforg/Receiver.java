@@ -28,5 +28,9 @@ public class Receiver {
 	public ResponseEntity<List<Artifact>> getMyArtifacts(String username) {
 		return new ResponseEntity<List<Artifact>>(artifactService.getAllArtifactsByUsername(username), HttpStatus.OK);
 	}
+	
+	public void deleteArtifact(long id) {
+		artifactService.deleteArtifact(id);
+	}
 }
 
